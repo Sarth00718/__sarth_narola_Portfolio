@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { PROFILE } from '@/lib/data';
-import { Github, Linkedin, Mail, MapPin, ArrowDown, Download } from 'lucide-react';
+import { GithubIcon, Linkedin, Mail, MapPin, ArrowDown, Download } from 'lucide-react';
 
 export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0);
@@ -31,10 +31,14 @@ export default function Hero() {
     document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const scrollToContact = () => {
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center px-6 pt-20"
+      className="relative min-h-screen flex items-center justify-center px-6 pt-20 overflow-hidden"
     >
       {/* Central planet */}
       <motion.div
@@ -43,7 +47,7 @@ export default function Hero() {
         transition={{ delay: 0.4, duration: 1.2, ease: 'easeOut' }}
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
       >
-        <div className="relative w-[500px] h-[500px] md:w-[700px] md:h-[700px]">
+        <div className="relative w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] md:w-[700px] md:h-[700px]">
           {/* Outer glow */}
           <div className="absolute inset-0 rounded-full bg-[#4F8CFF]/10 blur-3xl animate-pulse-glow" />
           {/* Planet core */}
@@ -103,7 +107,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 2.8, duration: 0.7 }}
-          className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-4"
+          className="font-heading text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-4 px-4"
         >
           <span className="text-white">Sarth</span>{' '}
           <span className="gradient-text">Narola</span>
@@ -113,9 +117,9 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 3.2, duration: 0.5 }}
-          className="h-8 mb-6 flex items-center justify-center"
+          className="h-8 mb-6 flex items-center justify-center px-4"
         >
-          <span className="font-display text-lg md:text-2xl text-[#7DF9FF] text-glow-accent">
+          <span className="font-display text-base sm:text-lg md:text-2xl text-[#7DF9FF] text-glow-accent">
             {displayText}
             <span className="animate-pulse">|</span>
           </span>
@@ -125,7 +129,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 3.4, duration: 0.6 }}
-          className="text-white/60 text-base md:text-lg max-w-2xl mx-auto mb-10"
+          className="text-white/60 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-10 px-4"
         >
           {PROFILE.tagline}. Final-year CS student at {PROFILE.university} (CGPA {PROFILE.cgpa}).
           Selected for Amazon ML Summer School 2025.
@@ -135,15 +139,15 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 3.6, duration: 0.6 }}
-          className="flex flex-wrap items-center justify-center gap-4 mb-12"
+          className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-12 px-4"
         >
           <button
             onClick={scrollToAbout}
-            className="cursor-hover group relative px-7 py-3.5 rounded-xl font-medium text-sm overflow-hidden"
+            className="cursor-hover group relative px-5 sm:px-7 py-3 sm:py-3.5 rounded-xl font-medium text-sm overflow-hidden"
           >
             <span className="absolute inset-0 bg-gradient-to-r from-[#4F8CFF] to-[#00F5FF] opacity-90" />
             <span className="absolute inset-0 bg-gradient-to-r from-[#4F8CFF] to-[#00F5FF] blur-lg opacity-50 group-hover:opacity-80 transition-opacity" />
-            <span className="relative text-white flex items-center gap-2">
+            <span className="relative text-white flex items-center gap-2 whitespace-nowrap">
               Enter Universe
               <ArrowDown className="w-4 h-4" />
             </span>
@@ -152,7 +156,7 @@ export default function Hero() {
           <a
             href={PROFILE.resumeUrl}
             download
-            className="cursor-hover inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-medium text-sm transition-all duration-200"
+            className="cursor-hover inline-flex items-center gap-2 px-5 sm:px-7 py-3 sm:py-3.5 rounded-xl font-medium text-sm transition-all duration-200 whitespace-nowrap"
             style={{
               background: 'rgba(79,140,255,0.18)',
               border: '1px solid rgba(79,140,255,0.35)',
@@ -163,32 +167,32 @@ export default function Hero() {
             Resume
           </a>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <a
               href={PROFILE.github}
               target="_blank"
               rel="noreferrer"
-              className="cursor-hover glass w-12 h-12 rounded-xl flex items-center justify-center hover:bg-white/10 transition-all"
+              className="cursor-hover glass w-11 h-11 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center hover:bg-white/10 transition-all"
               aria-label="GitHub"
             >
-              <Github className="w-5 h-5 text-white/70" />
+              <GithubIcon className="w-4 h-4 sm:w-5 sm:h-5 text-white/70" />
             </a>
             <a
               href={PROFILE.linkedin}
               target="_blank"
               rel="noreferrer"
-              className="cursor-hover glass w-12 h-12 rounded-xl flex items-center justify-center hover:bg-white/10 transition-all"
+              className="cursor-hover glass w-11 h-11 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center hover:bg-white/10 transition-all"
               aria-label="LinkedIn"
             >
-              <Linkedin className="w-5 h-5 text-white/70" />
+              <Linkedin className="w-4 h-4 sm:w-5 sm:h-5 text-white/70" />
             </a>
-            <a
-              href={`mailto:${PROFILE.email}`}
-              className="cursor-hover glass w-12 h-12 rounded-xl flex items-center justify-center hover:bg-white/10 transition-all"
+            <button
+              onClick={scrollToContact}
+              className="cursor-hover glass w-11 h-11 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center hover:bg-white/10 transition-all"
               aria-label="Email"
             >
-              <Mail className="w-5 h-5 text-white/70" />
-            </a>
+              <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-white/70" />
+            </button>
           </div>
         </motion.div>
 
@@ -196,16 +200,16 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 4, duration: 0.5 }}
-          className="flex items-center justify-center gap-6 text-xs text-white/40"
+          className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-xs text-white/40 px-4"
         >
-          <span className="flex items-center gap-1.5">
+          <span className="flex items-center gap-1.5 whitespace-nowrap">
             <MapPin className="w-3.5 h-3.5" />
             {PROFILE.location}
           </span>
-          <span className="w-1 h-1 rounded-full bg-white/20" />
-          <span>{PROFILE.university}</span>
-          <span className="w-1 h-1 rounded-full bg-white/20" />
-          <span>Class of {PROFILE.graduationYear}</span>
+          <span className="w-1 h-1 rounded-full bg-white/20 hidden sm:block" />
+          <span className="whitespace-nowrap">{PROFILE.university}</span>
+          <span className="w-1 h-1 rounded-full bg-white/20 hidden sm:block" />
+          <span className="whitespace-nowrap">Class of {PROFILE.graduationYear}</span>
         </motion.div>
       </div>
 

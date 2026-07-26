@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
 import { PROFILE } from '@/lib/data';
 import SectionHeader from '@/components/SectionHeader';
-import { Github, Linkedin, Mail, MapPin, Send, Check } from 'lucide-react';
+import { GithubIcon, Linkedin, Mail, MapPin, Send, Check } from 'lucide-react';
 
 const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ?? '';
 const EMAILJS_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ?? '';
@@ -69,7 +69,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative py-32 px-6">
+    <section id="contact" className="relative py-16 sm:py-24 md:py-32 px-4 sm:px-6">
       <div className="max-w-5xl mx-auto">
         <SectionHeader
           index="09"
@@ -126,7 +126,7 @@ export default function Contact() {
 
               {/* Orbiting social icons */}
               {[
-                { Icon: Github, link: PROFILE.github, color: '#ffffff' },
+                { Icon: GithubIcon, link: PROFILE.github, color: '#ffffff' },
                 { Icon: Linkedin, link: PROFILE.linkedin, color: '#0A66C2' },
                 { Icon: Mail, link: `mailto:${PROFILE.email}`, color: '#7DF9FF' },
               ].map((social, i) => {

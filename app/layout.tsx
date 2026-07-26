@@ -40,7 +40,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} ${sora.variable}`}>
-      <body className="bg-[#050816] text-white antialiased">{children}</body>
+      <body className="bg-[#050816] text-white antialiased overflow-x-hidden">{children}</body>
     </html>
   );
 }

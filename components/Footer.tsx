@@ -37,7 +37,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="relative pt-20 pb-8 px-6 mt-32 border-t border-white/5 overflow-hidden">
+    <footer className="relative pt-12 sm:pt-16 md:pt-20 pb-6 sm:pb-8 px-4 sm:px-6 mt-16 sm:mt-24 md:mt-32 border-t border-white/5 overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0A0E27]/50 to-[#050816] pointer-events-none" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-px bg-gradient-to-r from-transparent via-[#4F8CFF]/50 to-transparent" />

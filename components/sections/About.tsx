@@ -11,7 +11,7 @@ export default function About() {
   const [selected, setSelected] = useState<(typeof ABOUT_PANELS)[0] | null>(null);
 
   return (
-    <section id="about" className="relative py-32 px-6">
+    <section id="about" className="relative py-16 sm:py-24 md:py-32 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
         <SectionHeader
           index="02"
@@ -21,15 +21,15 @@ export default function About() {
         />
 
         {/* Profile Image Section */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="relative flex items-center justify-center"
+            className="relative flex items-center justify-center order-1 lg:order-none"
           >
-            <div className="relative w-80 h-80 md:w-96 md:h-96 flex items-center justify-center">
+            <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 flex items-center justify-center">
               {/* Single rotating ring */}
               <motion.div
                 animate={{ rotate: 360 }}
@@ -44,7 +44,7 @@ export default function About() {
               <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#4F8CFF]/20 to-[#00F5FF]/20 blur-2xl" />
 
               {/* Main profile image */}
-              <div className="relative w-[280px] h-[280px] md:w-[340px] md:h-[340px] rounded-full overflow-hidden border-4 border-[#4F8CFF]/50 shadow-2xl bg-gradient-to-br from-[#1a1f3a] to-[#0A0E27]">
+              <div className="relative w-[220px] h-[220px] sm:w-[280px] sm:h-[280px] md:w-[340px] md:h-[340px] rounded-full overflow-hidden border-4 border-[#4F8CFF]/50 shadow-2xl bg-gradient-to-br from-[#1a1f3a] to-[#0A0E27]">
                 {/* Profile Image */}
                 <Image
                   src="/IMGME.png"
@@ -68,11 +68,11 @@ export default function About() {
               </div>
 
               {/* Clean corner accents */}
-              <div className="absolute -inset-8">
-                <div className="absolute top-0 left-0 w-12 h-12 border-t-2 border-l-2 border-[#4F8CFF] rounded-tl-lg" />
-                <div className="absolute top-0 right-0 w-12 h-12 border-t-2 border-r-2 border-[#00F5FF] rounded-tr-lg" />
-                <div className="absolute bottom-0 left-0 w-12 h-12 border-b-2 border-l-2 border-[#00F5FF] rounded-bl-lg" />
-                <div className="absolute bottom-0 right-0 w-12 h-12 border-b-2 border-r-2 border-[#4F8CFF] rounded-br-lg" />
+              <div className="absolute -inset-6 sm:-inset-8">
+                <div className="absolute top-0 left-0 w-8 h-8 sm:w-12 sm:h-12 border-t-2 border-l-2 border-[#4F8CFF] rounded-tl-lg" />
+                <div className="absolute top-0 right-0 w-8 h-8 sm:w-12 sm:h-12 border-t-2 border-r-2 border-[#00F5FF] rounded-tr-lg" />
+                <div className="absolute bottom-0 left-0 w-8 h-8 sm:w-12 sm:h-12 border-b-2 border-l-2 border-[#00F5FF] rounded-bl-lg" />
+                <div className="absolute bottom-0 right-0 w-8 h-8 sm:w-12 sm:h-12 border-b-2 border-r-2 border-[#4F8CFF] rounded-br-lg" />
               </div>
             </div>
           </motion.div>
@@ -83,13 +83,14 @@ export default function About() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
+            className="order-2"
           >
-            <h3 className="font-heading text-2xl font-bold mb-3 text-white">
+            <h3 className="font-heading text-xl sm:text-2xl font-bold mb-3 text-white">
               {PROFILE.title}
             </h3>
-            <p className="text-white/60 leading-relaxed mb-8">{PROFILE.summary}</p>
+            <p className="text-white/60 leading-relaxed mb-6 sm:mb-8 text-sm sm:text-base">{PROFILE.summary}</p>
 
-            <div className="mb-8">
+            <div className="mb-6 sm:mb-8">
               <div className="text-xs uppercase tracking-[0.2em] text-[#7DF9FF]/70 mb-3 font-display">
                 Core Expertise
               </div>
@@ -97,7 +98,7 @@ export default function About() {
                 {PROFILE.expertise.map((e) => (
                   <span
                     key={e}
-                    className="glass px-3 py-1.5 rounded-lg text-sm text-white/70"
+                    className="glass px-3 py-1.5 rounded-lg text-xs sm:text-sm text-white/70"
                   >
                     {e}
                   </span>
@@ -113,7 +114,7 @@ export default function About() {
                 {PROFILE.lookingFor.map((l) => (
                   <span
                     key={l}
-                    className="px-3 py-1.5 rounded-lg text-sm text-white/70 border border-[#4F8CFF]/20 bg-[#4F8CFF]/5"
+                    className="px-3 py-1.5 rounded-lg text-xs sm:text-sm text-white/70 border border-[#4F8CFF]/20 bg-[#4F8CFF]/5"
                   >
                     {l}
                   </span>
@@ -124,7 +125,7 @@ export default function About() {
         </div>
 
         {/* Data panels grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-16">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 mt-12 sm:mt-16">
           {ABOUT_PANELS.map((panel, i) => (
             <motion.button
               key={panel.id}
@@ -134,11 +135,11 @@ export default function About() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.08, duration: 0.5 }}
               whileHover={{ y: -4 }}
-              className="cursor-hover glass rounded-2xl p-5 text-left group transition-all"
+              className="cursor-hover glass rounded-xl sm:rounded-2xl p-4 sm:p-5 text-left group transition-all"
               style={{ borderColor: `${panel.color}30` }}
             >
               <div
-                className="w-10 h-10 rounded-xl flex items-center justify-center text-xl mb-3"
+                className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center text-lg sm:text-xl mb-2 sm:mb-3"
                 style={{ background: `${panel.color}15` }}
               >
                 {panel.icon}
@@ -146,7 +147,7 @@ export default function About() {
               <div className="text-xs text-white/40 uppercase tracking-wide mb-1">
                 {panel.label}
               </div>
-              <div className="font-heading font-semibold text-white text-sm mb-0.5">
+              <div className="font-heading font-semibold text-white text-xs sm:text-sm mb-0.5">
                 {panel.title}
               </div>
               <div className="text-xs text-white/50">{panel.subtitle}</div>

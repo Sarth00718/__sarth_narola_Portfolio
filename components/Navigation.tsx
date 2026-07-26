@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Github, Linkedin, Download, Menu, X } from 'lucide-react';
+import { GithubIcon, Linkedin, Download, Menu, X } from 'lucide-react';
 import { NAV_SECTIONS, PROFILE } from '@/lib/data';
 
 export default function Navigation() {
@@ -68,7 +68,7 @@ export default function Navigation() {
           </button>
 
           {/* Desktop Navigation */}
-          <div className="hidden xl:flex items-center gap-1.5 flex-1 justify-center max-w-3xl">
+          <div className="hidden lg:flex items-center gap-1.5 flex-1 justify-center max-w-3xl">
             {NAV_SECTIONS.map((s) => (
               <button
                 key={s.id}
@@ -108,7 +108,7 @@ export default function Navigation() {
               whileTap={{ scale: 0.95 }}
               className="cursor-hover w-10 h-10 rounded-xl border-2 border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:border-[#4F8CFF]/60 hover:bg-[#4F8CFF]/10 transition-all duration-300"
             >
-              <Github className="w-5 h-5" />
+              <GithubIcon className="w-5 h-5" />
             </motion.a>
             <motion.a
               href={PROFILE.linkedin}
@@ -142,7 +142,7 @@ export default function Navigation() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="xl:hidden cursor-hover border-2 border-white/20 p-2.5 rounded-xl hover:bg-white/5 hover:border-[#4F8CFF]/60 transition-all duration-300 shrink-0"
+            className="lg:hidden cursor-hover border-2 border-white/20 p-2.5 rounded-xl hover:bg-white/5 hover:border-[#4F8CFF]/60 transition-all duration-300 shrink-0"
             aria-label="Menu"
           >
             {menuOpen ? <X className="w-5 h-5 text-white" /> : <Menu className="w-5 h-5 text-white" />}
@@ -160,99 +160,92 @@ export default function Navigation() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setMenuOpen(false)}
-              className="fixed inset-0 bg-black/70 backdrop-blur-sm z-40 xl:hidden"
+              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-40 lg:hidden"
             />
 
-            {/* Menu Panel */}
+            {/* Menu Sidebar */}
             <motion.div
-              initial={{ opacity: 0, x: '100%' }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: '100%' }}
-              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] z-50 xl:hidden p-6 overflow-y-auto"
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 30, stiffness: 300 }}
+              className="fixed top-0 right-0 h-full w-[280px] max-w-[85vw] z-50 lg:hidden flex flex-col shadow-2xl"
               style={{
-                background: 'rgba(5, 8, 22, 0.98)',
+                background: 'linear-gradient(to bottom, rgba(10, 14, 39, 0.98), rgba(5, 8, 22, 0.98))',
                 backdropFilter: 'blur(20px)',
-                borderLeft: '1px solid rgba(79, 140, 255, 0.2)',
+                borderLeft: '1px solid rgba(79, 140, 255, 0.3)',
               }}
             >
-              {/* Header */}
-              <div className="flex items-center justify-between mb-8 pb-6 border-b border-white/10">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl overflow-hidden border-2 border-white/20">
-                    <Image
-                      src="/logo.png"
-                      alt="Logo"
-                      width={48}
-                      height={48}
-                      className="object-cover"
-                    />
-                  </div>
-                  <div>
-                    <div className="font-heading text-base font-bold text-white">Sarth Narola</div>
-                    <div className="text-xs text-white/60">Full Stack Developer</div>
-                  </div>
+              {/* Header with Close Button */}
+              <div className="p-5 border-b border-white/10 flex items-center justify-between flex-shrink-0">
+                <div>
+                  <h3 className="font-heading text-base font-bold text-white">Menu</h3>
+                  <p className="text-xs text-white/50 mt-0.5">Navigate portfolio</p>
                 </div>
                 <button
                   onClick={() => setMenuOpen(false)}
-                  className="w-10 h-10 rounded-xl border-2 border-white/20 flex items-center justify-center hover:bg-white/5 hover:border-[#4F8CFF]/60 transition-all"
+                  className="w-9 h-9 rounded-lg glass border border-white/20 flex items-center justify-center hover:bg-white/10 transition-all"
+                  aria-label="Close menu"
                 >
                   <X className="w-5 h-5 text-white" />
                 </button>
               </div>
 
               {/* Navigation Links */}
-              <div className="flex flex-col gap-2 mb-6">
-                {NAV_SECTIONS.map((s) => (
-                  <button
-                    key={s.id}
-                    onClick={() => scrollTo(s.id)}
-                    className={`cursor-hover px-4 py-3.5 rounded-xl text-left text-sm font-semibold transition-all duration-300 relative overflow-hidden ${
-                      active === s.id ? 'text-white' : 'text-white/60 hover:text-white hover:bg-white/5'
-                    }`}
-                  >
-                    {active === s.id && (
-                      <div className="absolute inset-0 bg-gradient-to-r from-[#4F8CFF] to-[#00F5FF]" />
-                    )}
-                    <span className="relative flex items-center gap-3">
-                      <span className="text-lg">{s.icon}</span>
-                      {s.label}
-                    </span>
-                  </button>
-                ))}
-              </div>
+              <nav className="flex-1 p-4 overflow-y-auto scrollbar-hide">
+                <ul className="space-y-1">
+                  {NAV_SECTIONS.map((section) => (
+                    <li key={section.id}>
+                      <button
+                        onClick={() => scrollTo(section.id)}
+                        className={`w-full px-4 py-3 rounded-lg text-left text-sm font-medium transition-all duration-200 flex items-center gap-3 ${
+                          active === section.id
+                            ? 'bg-gradient-to-r from-[#4F8CFF] to-[#00F5FF] text-white shadow-lg'
+                            : 'text-white/70 hover:text-white hover:bg-white/10'
+                        }`}
+                      >
+                        <span className="text-base">{section.icon}</span>
+                        <span>{section.label}</span>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
 
-              {/* Social & Resume */}
-              <div className="pt-6 border-t border-white/10 space-y-3">
-                <div className="flex items-center gap-3">
+              {/* Footer Actions */}
+              <div className="p-4 border-t border-white/10 space-y-3 flex-shrink-0">
+                {/* Social Links */}
+                <div className="flex items-center gap-2">
                   <a
                     href={PROFILE.github}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex-1 h-12 rounded-xl border-2 border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:bg-white/5 hover:border-[#4F8CFF]/60 transition-all"
+                    className="flex-1 h-11 rounded-lg glass border border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:border-[#4F8CFF]/60 transition-all"
+                    aria-label="GitHub"
                   >
-                    <Github className="w-5 h-5" />
+                    <GithubIcon className="w-5 h-5" />
                   </a>
                   <a
                     href={PROFILE.linkedin}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex-1 h-12 rounded-xl border-2 border-white/20 flex items-center justify-center text-white/70 hover:text-[#0A66C2] hover:bg-white/5 hover:border-[#0A66C2]/60 transition-all"
+                    className="flex-1 h-11 rounded-lg glass border border-white/20 flex items-center justify-center text-white/70 hover:text-[#0A66C2] hover:border-[#0A66C2]/60 transition-all"
+                    aria-label="LinkedIn"
                   >
                     <Linkedin className="w-5 h-5" />
                   </a>
                 </div>
 
+                {/* Resume Download Button */}
                 <a
                   href={PROFILE.resumeUrl}
                   download
-                  className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl text-sm font-semibold transition-all relative overflow-hidden group"
+                  onClick={() => setMenuOpen(false)}
+                  className="w-full h-11 flex items-center justify-center gap-2 rounded-lg text-sm font-semibold text-white transition-all relative overflow-hidden group"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#4F8CFF] to-[#00F5FF]" />
-                  <span className="relative text-white flex items-center gap-2">
-                    <Download className="w-4 h-4" />
-                    Download Resume
-                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#4F8CFF] to-[#00F5FF] group-hover:opacity-90 transition-opacity" />
+                  <Download className="w-4 h-4 relative z-10" />
+                  <span className="relative z-10">Download Resume</span>
                 </a>
               </div>
             </motion.div>

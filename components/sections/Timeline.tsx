@@ -34,7 +34,7 @@ export default function Timeline() {
   };
 
   return (
-    <section id="timeline" className="relative py-32 px-6 pb-48">
+    <section id="timeline" className="relative py-16 sm:py-24 md:py-32 px-4 sm:px-6 pb-24 sm:pb-32 md:pb-48">
       <div className="max-w-6xl mx-auto">
         <SectionHeader
           index="06"

@@ -42,12 +42,15 @@ html.light {
   }
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    width: 100%;
   }
   body {
     background-color: var(--bg);
     color: var(--text);
     font-family: var(--font-inter), system-ui, sans-serif;
     overflow-x: hidden;
+    width: 100%;
     transition: background-color 0.4s ease, color 0.4s ease;
   }
   ::selection {
@@ -126,6 +129,15 @@ html.light {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(180deg, #7DF9FF, #00F5FF);
+}
+
+/* Hide scrollbar utility class */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
 
 /* Animations */

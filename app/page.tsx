@@ -22,21 +22,23 @@ export default function Home() {
   return (
     <>
       <LoadingSequence onDone={() => setLoaded(true)} />
-      <ParticleBackground />
-      <CustomCursor />
-      <Navigation />
-      <main className="relative z-10">
-        <Hero />
-        <About />
-        <Skills />
-        <Experience />
-        <Projects />
-        <Timeline />
-        <Achievements />
-        <Certificates />
-        <Contact />
-      </main>
-      <Footer />
+      <div className="w-full overflow-x-hidden">
+        <ParticleBackground />
+        <CustomCursor />
+        <Navigation />
+        <main className="relative z-10 overflow-x-hidden w-full max-w-[100vw]">
+          <Hero />
+          <About />
+          <Skills />
+          <Experience />
+          <Projects />
+          <Timeline />
+          <Achievements />
+          <Certificates />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
     </>
   );
 }

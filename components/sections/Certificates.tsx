@@ -10,7 +10,7 @@ export default function Certificates() {
   const [selected, setSelected] = useState<(typeof CERTIFICATES)[0] | null>(null);
 
   return (
-    <section id="certificates" className="relative py-32 px-6">
+    <section id="certificates" className="relative py-16 sm:py-24 md:py-32 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
         <SectionHeader
           index="08"

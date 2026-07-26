@@ -37,7 +37,7 @@ export default function Skills() {
   ];
 
   return (
-    <section id="skills" className="relative py-32 px-6">
+    <section id="skills" className="relative py-16 sm:py-24 md:py-32 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
         <SectionHeader
           index="03"

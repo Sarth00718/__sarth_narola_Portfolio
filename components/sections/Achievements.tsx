@@ -10,7 +10,7 @@ export default function Achievements() {
   const [selected, setSelected] = useState<(typeof ACHIEVEMENTS)[0] | null>(null);
 
   return (
-    <section id="achievements" className="relative py-32 px-6">
+    <section id="achievements" className="relative py-16 sm:py-24 md:py-32 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
         <SectionHeader
           index="07"

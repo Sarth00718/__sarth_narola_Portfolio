@@ -29,7 +29,7 @@ export default function Experience() {
   };
 
   return (
-    <section id="experience" className="relative py-32 px-6">
+    <section id="experience" className="relative py-16 sm:py-24 md:py-32 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
         <SectionHeader
           index="04"
