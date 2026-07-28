@@ -22,6 +22,12 @@ export const metadata: Metadata = {
     'Portfolio',
   ],
   authors: [{ name: 'Sarth Narola' }],
+  icons: {
+    icon: [
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/logo.png', type: 'image/png' },
+    ],
+  },
   openGraph: {
     title: 'Sarth Narola — Full Stack Developer & AI Engineer',
     description:
