@@ -37,117 +37,114 @@ export default function Navigation() {
   return (
     <>
       <motion.nav
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
+        initial={{ y: -100, x: '-50%', opacity: 0 }}
+        animate={{ y: 0, x: '-50%', opacity: 1 }}
         transition={{ delay: 2.4, duration: 0.6, ease: 'easeOut' }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled ? 'py-3' : 'py-4'
-        }`}
+        className={`fixed left-1/2 z-50 transition-all duration-500 flex items-center justify-between gap-2 md:gap-4 rounded-full border border-white/10 ${
+          scrolled ? 'top-4 py-2 px-4 shadow-[0_0_40px_rgba(79,140,255,0.15)]' : 'top-6 py-3 px-6 shadow-2xl'
+        } w-[95%] max-w-[1200px]`}
         style={{
-          background: scrolled ? 'rgba(5, 8, 22, 0.95)' : 'rgba(5, 8, 22, 0.7)',
+          background: scrolled ? 'rgba(5, 8, 22, 0.85)' : 'rgba(5, 8, 22, 0.6)',
           backdropFilter: 'blur(20px)',
           WebkitBackdropFilter: 'blur(20px)',
-          borderBottom: scrolled ? '1px solid rgba(79, 140, 255, 0.2)' : '1px solid rgba(255, 255, 255, 0.05)',
         }}
       >
-        <div className="max-w-[1400px] mx-auto px-4 md:px-6 flex items-center justify-between gap-4">
-          {/* Logo Section */}
-          <button
-            onClick={() => scrollTo('hero')}
-            className="cursor-hover group shrink-0"
-          >
-            <div className="relative w-11 h-11 rounded-xl overflow-hidden border-2 border-white/20 group-hover:border-[#4F8CFF]/60 transition-all duration-300">
-              <Image
-                src="/logo.png"
-                alt="Sarth Narola"
-                width={44}
-                height={44}
-                className="object-cover"
-              />
-            </div>
-          </button>
-
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-1.5 flex-1 justify-center max-w-3xl">
-            {NAV_SECTIONS.map((s) => (
-              <button
-                key={s.id}
-                onClick={() => scrollTo(s.id)}
-                className={`cursor-hover relative px-3 py-2 rounded-xl text-xs font-medium transition-all duration-300 whitespace-nowrap ${
-                  active === s.id
-                    ? 'text-white'
-                    : 'text-white/60 hover:text-white/90 hover:bg-white/5'
-                }`}
-              >
-                {active === s.id && (
-                  <motion.div
-                    layoutId="activeNav"
-                    className="absolute inset-0 rounded-xl bg-gradient-to-r from-[#4F8CFF] to-[#00F5FF]"
-                    style={{
-                      boxShadow: '0 0 20px rgba(79, 140, 255, 0.5)',
-                    }}
-                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                  />
-                )}
-                <span className="relative flex items-center gap-1.5">
-                  <span className="text-sm">{s.icon}</span>
-                  <span>{s.label}</span>
-                </span>
-              </button>
-            ))}
+        {/* Logo Section */}
+        <button
+          onClick={() => scrollTo('hero')}
+          className="cursor-hover group shrink-0"
+        >
+          <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-white/20 group-hover:border-[#4F8CFF]/60 transition-all duration-300 shadow-[0_0_15px_rgba(79,140,255,0.1)]">
+            <Image
+              src="/logo.png"
+              alt="Sarth Narola"
+              width={40}
+              height={40}
+              className="object-cover"
+            />
           </div>
+        </button>
 
-          {/* Right Actions */}
-          <div className="hidden lg:flex items-center gap-3 shrink-0">
-            <motion.a
-              href={PROFILE.github}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="GitHub"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              className="cursor-hover w-10 h-10 rounded-xl border-2 border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:border-[#4F8CFF]/60 hover:bg-[#4F8CFF]/10 transition-all duration-300"
+        {/* Desktop Navigation */}
+        <div className="hidden lg:flex items-center gap-1 flex-1 justify-center max-w-4xl">
+          {NAV_SECTIONS.map((s) => (
+            <button
+              key={s.id}
+              onClick={() => scrollTo(s.id)}
+              className={`cursor-hover relative px-3 py-2 rounded-full text-xs font-medium transition-all duration-300 whitespace-nowrap ${
+                active === s.id
+                  ? 'text-white'
+                  : 'text-white/60 hover:text-white/90 hover:bg-white/5'
+              }`}
             >
-              <GithubIcon className="w-5 h-5" />
-            </motion.a>
-            <motion.a
-              href={PROFILE.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="LinkedIn"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              className="cursor-hover w-10 h-10 rounded-xl border-2 border-white/20 flex items-center justify-center text-white/70 hover:text-[#0A66C2] hover:border-[#0A66C2]/60 hover:bg-[#0A66C2]/10 transition-all duration-300"
-            >
-              <Linkedin className="w-5 h-5" />
-            </motion.a>
-
-            <motion.a
-              href={PROFILE.resumeUrl}
-              download
-              aria-label="Download Resume"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              className="cursor-hover flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm transition-all duration-300 relative overflow-hidden group ml-2"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-[#4F8CFF] to-[#00F5FF]" />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#4F8CFF] to-[#00F5FF] blur-lg opacity-60 group-hover:opacity-80 transition-opacity" />
-              <span className="relative text-white flex items-center gap-2 whitespace-nowrap">
-                <Download className="w-4 h-4" />
-                Resume
+              {active === s.id && (
+                <motion.div
+                  layoutId="activeNav"
+                  className="absolute inset-0 rounded-full bg-gradient-to-r from-[#4F8CFF]/20 to-[#00F5FF]/20 border border-white/10"
+                  style={{
+                    boxShadow: '0 0 20px rgba(79, 140, 255, 0.1)',
+                  }}
+                  transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                />
+              )}
+              <span className="relative flex items-center gap-1.5">
+                <span className="text-sm">{s.icon}</span>
+                <span className="hidden xl:block">{s.label}</span>
               </span>
-            </motion.a>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="lg:hidden cursor-hover border-2 border-white/20 p-2.5 rounded-xl hover:bg-white/5 hover:border-[#4F8CFF]/60 transition-all duration-300 shrink-0"
-            aria-label="Menu"
-          >
-            {menuOpen ? <X className="w-5 h-5 text-white" /> : <Menu className="w-5 h-5 text-white" />}
-          </button>
+            </button>
+          ))}
         </div>
+
+        {/* Right Actions */}
+        <div className="hidden lg:flex items-center gap-2 shrink-0">
+          <motion.a
+            href={PROFILE.github}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="GitHub"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="cursor-hover w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:border-[#4F8CFF]/60 hover:bg-[#4F8CFF]/10 transition-all duration-300"
+          >
+            <GithubIcon className="w-4 h-4" />
+          </motion.a>
+          <motion.a
+            href={PROFILE.linkedin}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="LinkedIn"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="cursor-hover w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-[#0A66C2] hover:border-[#0A66C2]/60 hover:bg-[#0A66C2]/10 transition-all duration-300"
+          >
+            <Linkedin className="w-4 h-4" />
+          </motion.a>
+
+          <motion.a
+            href={PROFILE.resumeUrl}
+            download
+            aria-label="Download Resume"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="cursor-hover flex items-center gap-2 px-4 py-2 rounded-full font-semibold text-xs transition-all duration-300 relative overflow-hidden group ml-1"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-[#4F8CFF] to-[#00F5FF]" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#4F8CFF] to-[#00F5FF] blur-md opacity-60 group-hover:opacity-100 transition-opacity" />
+            <span className="relative text-[#050816] flex items-center gap-1.5 whitespace-nowrap">
+              <Download className="w-4 h-4" />
+              <span className="hidden xl:block">Resume</span>
+            </span>
+          </motion.a>
+        </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="lg:hidden cursor-hover border border-white/20 p-2.5 rounded-full hover:bg-white/5 hover:border-[#4F8CFF]/60 transition-all duration-300 shrink-0"
+          aria-label="Menu"
+        >
+          {menuOpen ? <X className="w-5 h-5 text-white" /> : <Menu className="w-5 h-5 text-white" />}
+        </button>
       </motion.nav>
 
       {/* Mobile Menu */}
