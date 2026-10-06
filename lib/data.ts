@@ -229,7 +229,7 @@ export const CORE_PROJECTS = [
       'Pulls out financial insights from your documents in plain language',
     ],
     githubUrl: 'https://github.com/Sarth00718/Financial-Chatbot-',
-    liveUrl: 'https://financial-chabot.vercel.app/',
+    liveUrl: 'http://finchatbot-alb-2082232672.us-east-1.elb.amazonaws.com/',
   },
   {
     id: 'expense-tracker',
@@ -277,7 +277,7 @@ export const CORE_PROJECTS = [
       'Deployed on Vercel',
     ],
     githubUrl: 'https://github.com/Sarth00718/Vastra-cloth-shop',
-    liveUrl: 'https://vastra-cloth-shop-oirs.vercel.app/login',
+    liveUrl: 'http://vastra-shop-frontend-665651551502.s3-website-us-east-1.amazonaws.com',
   },
   {
     id: 'chat-app',
